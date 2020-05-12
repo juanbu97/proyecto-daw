@@ -1,16 +1,66 @@
 .btn-facebook, .btn-google, .btn-twitter{
-    width:32%;
+  width:32%;
+}
+.btn-facebook{
+  background: #3b5998;
+  color: #fff;
+}
+.btn-google{
+  background: #1565C0;
+  color:#fff;
+}
+
+.btn-twitter{
+  background: #55acee;
+  color:#fff;
+}
+
+#banner{
+  width: 100%;
+  height: 8vh;
+  background-color: #1565C0;
+  background-size:  22%;
+  background-position: 97%;
+  background-repeat: no-repeat;
+  background-image: url('src/assets/img/logo3.png');
+}
+
+.material-icons{
+  color: white;
+  position: 8%;
+  font-size: 45px;
+  margin: 0.2em;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  text-align: center;
+  background-color: white;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 1em;
+  border: 0.5px solid gray;
   }
-  .btn-facebook{
-    background: #3b5998;
-    color: #fff;
-  }
-  .btn-google{
-    background: #dd4b39;
-    color:#fff;
-  }
-  
-  .btn-twitter{
-    background: #55acee;
-    color:#fff;
-  }
+
+
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  font-size: 36px;
+  display: block
+}
+
+#shikobaIcono{
+  width: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
+#contendor1{
+  display: block;
+}

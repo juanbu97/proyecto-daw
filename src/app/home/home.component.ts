@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
 import { AlumnosService } from '../services/alumnos.service';
+import { Alumno } from '../model/alumno';
+
 
 @Component({
   selector: 'app-home',
@@ -10,31 +11,45 @@ import { AlumnosService } from '../services/alumnos.service';
 })
 export class HomeComponent implements OnInit {
 
+  public title:string;
+  public alumno:Alumno;
 
-  public isLogged:boolean;
-  
+
   constructor(
-    public auth: AuthService,
-    public alumno: AlumnosService,
-    public rout: Router
+    private _authService: AuthService,
+    private _alumnoService: AlumnosService,
   ) { }
 
   ngOnInit(): void {
-    this.alumno.getAlumno().subscribe(res => {
-      if (res['code']!=200) {
-        console.log(res);
-      } else {
-        console.log(res['data']);
+    this._alumnoService.getAlumno().subscribe(
+      result => {
+        if(result['code'] != 200){
+          console.log(result);
+        }else{
+          this.alumno = result['data'];
+        }
+      },
+      error => {
+        console.log(<any>error);
       }
-    }, error =>{
-      console.log(<any>error);
-    });
+    );
+    document.body.style.backgroundColor = "white";
+
   }
 
-  logout(){
-    this.auth.logout()
-      .then((res) => {
-        this.rout.navigate(['/']);
-      }).catch(err => console.log(err.message))
+  onClickLogout(){
+    this._authService.logout();
   }
+
+  openNav(){
+    document.getElementById("menuLateral").style.width = "300px";
+    document.body.style.backgroundColor = "gray";
+  }
+
+  closeNav() {
+    document.getElementById("menuLateral").style.width = "0";
+    document.body.style.backgroundColor = "white";
+
+  }
+
 }
